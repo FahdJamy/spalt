@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login| Now</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='main.css') }}" />
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/jquery.min.js')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.js')}}">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}"> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css')}}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script> 
+    <link href="https://fonts.googleapis.com/css?family=lato:100,300,400,700,900" rel="stylesheet">
+    <script src="main.js"></script>
+
+
+    
+</head>
+<body>
+    <section class="section--login">
+        <div class="row">
+            <div class="col-1-of-2">
+
+            </div>
+            <div class="col-1-of-2">
+                <div class="login__form">
+                    <div class="u-center-text u-margin-bottom-small">
+                        <div class="heading-secondary">
+                            SignUp
+                        </div>
+                    </div>
+                    <form method="POST" action="" class="form-mi" style="box-sizing: 100%">
+                    {% include 'includes/_messages.html' %}
+                        {{ form.hidden_tag() }}
+                        <div class="form__group">
+                        	{% if form.fullname.errors %}
+                        		{{ form.fullname(class="form__input is-invalid", id="fullname") }}
+                        		<div class="invalid-feedback">
+                        			{% for error in form.fullname.errors %}
+                        				<span>{{ error }}</span>
+                        			{% endfor %}
+                        		</div>
+                        	{% else %}
+                        		{{ form.fullname(class="form__input", id="fullname") }}
+                        	{% endif %}
+                        	<!-- {{ form.fullname.label(class="form__label", for="#fullname") }} -->
+                            <!-- <input type="text" class="form__input" placeholder="Full name" required id="fullname"> -->
+                            <label for="#fullname" class="form__label">Full name</label>
+                        </div>
+                        <div class="form__group">
+                        	{% if form.username.errors %}
+                        		{{ form.username(class="form__input is-invalid", id="username") }}
+                        		<div class="invalid-feedback">
+                        			{% for error in form.username.errors %}
+                        				<span>{{ error }}</span>
+                        			{% endfor %}
+                        		</div>
+                        	{% else %}
+                        		{{ form.username(class="form__input", id="username") }}
+                        	{% endif %}
+                        	<!-- {{ form.username.label(class="form__label", for="#username") }} -->
+                            <!-- <input type="text" class="form__input" placeholder="Full name" required id="username"> -->
+                            <label for="#username" class="form__label">Username</label>
+                        </div>
+                        <div class="form__group">
+                        	{% if form.email.errors %}
+                        		{{ form.email(class="form__input is-invalid", id="email") }}
+                        		<div class="invalid-feedback">
+                        			{% for error in form.email.errors %}
+                        				<span>{{ error }}</span>
+                        			{% endfor %}
+                        		</div>
+                        	{% else %}
+                        		{{ form.email(class="form__input", id="email") }}
+                        	{% endif %}
+                        	<!-- {{ form.email.label(class="form__label", for="#email") }} -->
+                            <!-- <input type="text" class="form__input" placeholder="Full name" required id="email"> -->
+                            <label for="#email" class="form__label">Email</label>
+                        </div>
+                        <div class="form__group">
+                        	{% if form.password.errors %}
+                        		{{ form.password(class="form__input is-invalid", id="password") }}
+                        		<div class="invalid-feedback">
+                        			{% for error in form.password.errors %}
+                        				<span>{{ error }}</span>
+                        			{% endfor %}
+                        		</div>
+                        	{% else %}
+                        		{{ form.password(class="form__input", id="password") }}
+                        	{% endif %}
+                        	<!-- {{ form.password.label(class="form__label", for="#password") }} -->
+                            <!-- <input type="text" class="form__input" placeholder="Full name" required id="password"> -->
+                            <label for="#password" class="form__label">Password</label>
+                        </div>
+                        <div class="form__group">
+                        	{% if form.password_confirm.errors %}
+                        		{{ form.password_confirm(class="form__input is-invalid", id="password_confirm") }}
+                        		<div class="invalid-feedback">
+                        			{% for error in form.password_confirm.errors %}
+                        				<span>{{ error }}</span>
+                        			{% endfor %}
+                        		</div>
+                        	{% else %}
+                        		{{ form.password_confirm(class="form__input", id="password_confirm") }}
+                        	{% endif %}
+                        	<!-- {{ form.password_confirm.label(class="form__label", for="#password_confirm") }} -->
+                            <!-- <input type="text" class="form__input" placeholder="Full name" required id="password_confirm"> -->
+                            <label for="#password_confirm" class="form__label">Confirm password</label>
+                        </div>
+
+                        <!-- <div class="form__group">
+                            <input type="text" class="form__input" placeholder="Username" required id="username">
+                            <label for="#username" class="form__label">Username</label>
+                        </div>
+                        <div class="form__group">
+                            <input type="email" class="form__input" placeholder="Email" required id="email">
+                            <label for="#email" class="form__label">Email</label>
+                        </div>
+                        <div class="form__group">
+                            <input type="password" class="form__input" placeholder="Password" required id="password">
+                            <label for="#password" class="form__label">Password</label>
+                        </div>
+                        <div class="form__group">
+                            <input type="password" class="form__input" placeholder="Confirm password" required id="passwordc">
+                            <label for="#passwordc" class="form__label">Confirm password</label>
+                        </div> -->
+                        <div class="form__group">
+                            <!-- <button class="btn btn--blue" type="submit">SignUp</button> -->
+                        	{{ form.submit(class="btn btn--blue") }}
+                        </div>
+                        <div class="form__group u-center-text form__account">
+                            <span>Already have an account?</span>
+                            <a href="{{ url_for('login') }}" style="text-decoration: none;">Login</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            Footer
+        </div>
+    </section>
+</body>
+</html>

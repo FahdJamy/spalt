@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+	<div class="content-section" style="margin-top: 7rem; margin-left: 20rem; padding: 10px 60px; background-color: #fff; width: 50%;">
+		<div class="media">
+			<img class="rounded-circle account-img" src="{{ image_file }}" alt="" style="width: 10rem; height: 10rem">
+			<div class="media-body">
+				<div class="account-heading" style="font-size: 3rem;">Hard coded</div>
+				<div class="text-secondary" style="font-size: 1.5rem;">Loren ipsum</div>
+			</div>
+		</div>
+		<div>
+			<form action="" method="POST" enctype="multipart/form-data" class="content-section">
+				<div class="form-group">
+					{{ form.fullname.label(class="form-control-label") }}
+					{% if form.fullname.errors %}
+						<div class="invalid-feedback">
+							{% for error in form.fullname.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+					{% endif %}
+					{{ form.fullname(class="form-control form-control-lg") }}
+				</div>
+				<div class="form-group">
+					{{ form.image_file.label() }}
+					{% if form.image_file.errors %}
+						<div class="invalid-feedback">
+							{% for error in form.image_file.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}							
+						</div>
+					{% endif %}
+					{{ form.image_file(class="form-control-file") }}						
+				</div>					
+			</form>
+		</div>
+	</div>
+{% endblock content %}

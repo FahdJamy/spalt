@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login| Now</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/jquery.min.js')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.js')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static' , filename='main.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <link href="https://fonts.googleapis.com/css?family=lato:100,300,400,700,900" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='main.css') }}" />
+    <script src="main.js"></script>
+    
+</head>
+<body>
+    <section class="section-login">
+        <div class="row">
+            <div class="col-1-of-2">
+                
+            </div>
+            <div class="col-1-of-2">
+                <div class="login_form">
+                    <div class="u-center-text u-margin-bottom-small">
+                        <div class="heading-secondary">
+                            Login
+                        </div>
+                    </div>       
+                    {% include 'includes/_messages.html' %}
+                    <form method="POST" action="" class="form-mi">
+                        {{ form.hidden_tag() }}
+                        <div class="form__group">
+                           <!--  {% if form.email.errors%}
+                                {{ form.email(class="form__input") }}
+                                <div>
+                                    {% for error in form.email.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.email(class="form__input") }}
+                            {% endif %} -->
+                            <input type="email" class="form__input" placeholder="Email" required id="email" name="email" value={{ request.form.email }}>
+                            <label for="#email" class="form__label">Email</label>
+                        </div>
+                        <div class="form__group">
+                            <!-- {% if form.password.errors %}
+                                {{ form.password(class="form__input") }}
+                                <div>
+                                    {% for error in form.password.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.password(class="form__input") }}
+                            {% endif %} -->
+                            <input type="password" class="form__input" placeholder="Password" required name="password" id="password">
+                            <label for="#password" class="form__label">Password</label>
+                        </div>
+                        <div class="form__group">
+                            <!-- {{ form.submit(class="btn btn--blue") }} -->
+                            <button class="btn btn--blue">Login</button>
+                        </div>
+                        <div class="form__group u-center-text form__account">
+                            <span>Need an account?</span>
+                            <a href="{{ url_for('signup') }}" style="text-decoration: none;">Signup</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            Footer
+        </div>
+    </section>
+</body>
+
+</html>

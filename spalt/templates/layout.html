@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/jquery.min.js')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.js')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+
+
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='scripts/script.js') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+	
+	
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+
+	<title>ero</title>
+</head>
+<body>
+	<div class="m_conatiner">
+        <header class="header">
+            <img src="../static/img/Coin.png" alt="rylo logo" class="logo">
+
+            <form action="#" class="search">
+                <input type="text" class="search__input" placeholder="Search Users">
+                <button class="search__button">
+                    <!-- <svg class="search__icon">
+                        <use xlink:href="../static/img/sprite.svg#basic_magnifier.svg"></use>
+                    </svg> -->
+                    <div class="user-nav__icon">
+                        <img src="../static/img/SVG/basic_magnifier.svg" alt="icon" class="icons-resized">
+                    </div>
+                </button>
+            </form>
+
+            <nav class="user-nav">
+                <div class="user-nav__icon-box">
+                    <svg class="user-nav__icon">
+                        <use xlink:href="../static/img/sprite.svg#basic_mail.svg"></use>
+                    </svg>
+                    <div class="user-nav__icon">
+                        <img src="../static/img/SVG/basic_mail.svg" alt="icon" class="icons-resized">
+                    </div>
+                    <span class="user-nav__notification">5</span>
+                </div>
+                <div class="user-nav__icon-box">
+                    <svg class="user-nav__icon">
+                        <use xlink:href="../static/img/sprite.svg#basic_message.svg"></use>
+                    </svg>
+                    <div class="user-nav__icon">
+                        <img src="../static/img/SVG/basic_message.svg" alt="icon" class="icons-resized">
+                    </div>
+                    <span class="user-nav__notification">15</span>
+                </div>
+                <div class="user-nav__user">
+                    <img src="../static/img/rajab.jpg" alt="User photo" class="user-nav__user-photo">
+                    <span class="user-nav__user-name">Rajab</span>
+                </div>
+            </nav>
+        </header>
+
+
+        <div class="content">
+            <nav class="sidebar">
+                <ul class="side-nav">
+                    <li class="side-nav__item side-nav__item--active">
+                        <a href="#" class="side-nav__link">
+                            <svg class="user-nav__icon">
+                                <use xlink:href="../static/img/sprite.svg#basic_message.svg"></use>
+                            </svg>
+                            <div class="user-nav__icon">
+                                <img src="../static/img/SVG/basic_message.svg" alt="icon" class="icons-resized">
+                            </div>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="side-nav__item">
+                        <a href="#" class="side-nav__link">
+                            <svg class="user-nav__icon">
+                                <use xlink:href="../static/img/sprite.svg#basic_message.svg"></use>
+                            </svg>
+                            <div class="user-nav__icon">
+                                <img src="../static/img/SVG/basic_message.svg" alt="icon" class="icons-resized">
+                            </div>
+                            <span>Forums</span>
+                        </a>
+                    </li>
+                    <li class="side-nav__item">
+                        <a href="#" class="side-nav__link">
+                            <svg class="user-nav__icon">
+                                <use xlink:href="../static/img/sprite.svg#basic_message.svg"></use>
+                            </svg>
+                            <div class="user-nav__icon">
+                                <img src="../static/img/SVG/basic_message.svg" alt="icon" class="icons-resized">
+                            </div>
+                            <span>Events</span>
+                        </a>
+                    </li>
+                    <li class="side-nav__item">
+                        <a href="#" class="side-nav__link">
+                            <svg class="user-nav__icon">
+                                <use xlink:href="../static/img/sprite.svg#basic_message.svg"></use>
+                            </svg>
+                            <div class="user-nav__icon">
+                                <img src="../static/img/SVG/basic_message.svg" alt="icon" class="icons-resized">
+                            </div>
+                            <span>Users</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="legal">
+                    &copy; 2018 Raedar's rylo all rights reserved
+                </div>
+            </nav>
+
+ 
+            <main class="post-view">
+				{% block content %}
+				{% endblock content %}
+                <!--<div class="gallery">
+                    <figure class="gallery__item">
+                        <img src="../static/img/rajab.jpg" alt="Post pic" class="gallery__photo">
+                    </figure>
+                    <figure class="gallery__item">
+                        <img src="../static/img/rajjab.jpg" alt="Post pic" class="gallery__photo">
+                    </figure>
+                    <figure class="gallery__item">
+                        <img src="../static/img/rajab.jpg" alt="Post pic" class="gallery__photo">
+                    </figure>
+                </div>
+
+                <div class="overview">
+                    <h1 class="overview__heading">
+                        Raedar's Mark
+                    </h1>
+                    <div class="overview__stars">
+                        <svg class="overview__icon-star">
+                            <use xlink:href="../static/img/sprite.svg#basic_message.svg"></use>
+                        </svg>
+                        <div class="overview__icon-star">
+                            <img src="../static/img/SVG/basic_heart.svg" alt="icon" class="icons-resized">
+                        </div>
+                        <svg class="overview__icon-star">
+                            <use xlink:href="../static/img/sprite.svg#basic_message.svg"></use>
+                        </svg>
+                        <div class="overview__icon-star">
+                            <img src="../static/img/SVG/basic_heart.svg" alt="icon" class="icons-resized">
+                        </div>
+                        <svg class="overview__icon-star">
+                            <use xlink:href="../static/img/sprite.svg#basic_message.svg"></use>
+                        </svg>
+                        <div class="overview__icon-star">
+                            <img src="../static/img/SVG/basic_heart.svg" alt="icon" class="icons-resized">
+                        </div>
+                        <svg class="overview__icon-star">
+                            <use xlink:href="../static/img/sprite.svg#basic_message.svg"></use>
+                        </svg>
+                        <div class="overview__icon-star">
+                            <img src="../static/img/SVG/basic_heart.svg" alt="icon" class="icons-resized">
+                        </div>
+                        <svg class="overview__icon-star">
+                            <use xlink:href="../static/img/sprite.svg#basic_message.svg"></use>
+                        </svg>
+                        <div class="overview__icon-star">
+                            <img src="../static/img/SVG/basic_heart.svg" alt="icon" class="icons-resized">
+                        </div>
+                    </div>
+                    <div class="overview__location">
+                        <svg class="overview__icon-location">
+                            <use xlink:href="../static/img/sprite.svg#basic_message.svg"></use>
+                        </svg>
+                        <div class="overview__icon-location">
+                            <img src="../static/img/SVG/basic_cards_hearts.svg" alt="icon" class="icons-resized">
+                        </div>
+                        <button class="btn-inline">Entebbe, Ebbs</button>
+                    </div>
+
+                    <div class="overview__rating">
+                        <div class="overview__rating-average">8.6</div>
+                        <div class="overview__rating-count">429 views</div>
+                    </div>
+                </div>
+
+                <div class="detail">
+                    <div class="description">
+                        <p class="paragraph">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto culpa dicta 
+                            suscipit, sed quibusdam labore harum assumenda exercitationem facere, dolorem 
+                            voluptas ea blanditiis totam iste nemo in obcaecati eius debitis.
+                        </p>
+                        <p class="paragraph">
+                            Accrium dolor sit amet consectetur adipisicing elit. Architecto culpa dicta 
+                            suscipit, sed quibusdam labore harum assumenda exercitationem.
+                        </p>
+                        <ul class="list">
+                            <li class="list__item">Educ forum</li>
+                            <li class="list__item">Sports forum</li>
+                            <li class="list__item">Lime forum</li>
+                            <li class="list__item">Business forum</li>
+                            <li class="list__item">Money forum</li>
+                            <li class="list__item">Lifestyle forum</li>
+                            <li class="list__item">Talk forum</li>
+                            <li class="list__item">Loud forum</li>
+                        </ul>
+                        <div class="recommend">
+                            <p class="recommend__count">
+                                Hennesy and 'em all agree upon this
+                            </p>
+                            <div class="recommend__friends">
+                                <img src="../static/img/rajab.jpg" alt="We" class="recommend__photo">
+                                <img src="../static/img/rajab.jpg" alt="Us" class="recommend__photo">
+                                <img src="../static/img/rajab.jpg" alt="Her" class="recommend__photo">
+                                <img src="../static/img/rajab.jpg" alt="Why" class="recommend__photo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="user-reviews">
+                        <figure class="review">
+                            <blockquote class="review__text">
+                                Accrium dolor sit amet consectetur adipisicing elit. Architecto culpa dicta 
+                                suscipit, sed quibusdam labore harum assumenda exercitationem.
+                            </blockquote>
+                            <figcaption class="review__user">
+                                <img src="../static/img/rajjab.jpg" alt="Rajab 1" class="review__photo">
+                                <div class="review__user-box">
+                                    <p class="review__user-name">J Rajab</p>
+                                    <p class="review__user-date">Feb 22 '17</p>
+                                </div>
+                                <div class="review__rating">9.1</div>
+                            </figcaption>
+                        </figure>
+                        <figure class="review">
+                            <blockquote class="review__text">
+                                Consectetur adipisicing elit. Architecto culpa dicta quibusdam labore harum 
+                                assumenda exercitationem.
+                            </blockquote>
+                            <figcaption class="review__user">
+                                <img src="../static/img/rajjab.jpg" alt="Rajab 1" class="review__photo">
+                                <div class="review__user-box">
+                                    <p class="review__user-name">J Hagary</p>
+                                    <p class="review__user-date">Mar 22 '17</p>
+                                </div>
+                                <div class="review__rating">6.3</div>
+                            </figcaption>
+                        </figure>
+
+                        <button class="btn-inline">View all <span>&rarr;</span></button>
+                        
+                    </div>
+                </div>
+                
+                <div class="cta">
+                    <h2 class="cta__book-now">
+                        Good new it all now done
+                    </h2>
+                    <button class="btn">
+                        <span class="btn__visible">Book now</span>
+                        <span class="btn__invisible">Only u is missing</span>
+                    </button>
+                </div> -->
+                
+            </main>
+        </div>
+    </div>
+</body>
+</html>
