@@ -8,7 +8,8 @@ from flask_bcrypt import Bcrypt
 app = Flask(__name__)
 # applictions secret key
 app.config['SECRET_KEY'] = '3da8dfc5ed7003c124b7294ab73d31dda0b11c6b'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///spaltdb.db'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///spaltdb.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/spalt'
 db = SQLAlchemy(app)
 
 login_manager = LoginManager(app)

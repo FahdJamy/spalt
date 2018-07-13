@@ -4,8 +4,8 @@
 		<div class="media">
 			<img class="rounded-circle account-img" src="{{ image_file }}" alt="" style="width: 10rem; height: 10rem">
 			<div class="media-body">
-				<div class="account-heading" style="font-size: 3rem;">Hard coded</div>
-				<div class="text-secondary" style="font-size: 1.5rem;">Loren ipsum</div>
+				<div class="account-heading" style="font-size: 3rem;">{{ current_user.imagefile }}</div>
+				<div class="text-secondary" style="font-size: 1.5rem;">{{ current_user.username }}</div>
 			</div>
 		</div>
 		<div>
