@@ -106,34 +106,14 @@
                         	{% else %}
                         		{{ form.password_confirm(class="form__input", id="password_confirm") }}
                         	{% endif %}
-                        	<!-- {{ form.password_confirm.label(class="form__label", for="#password_confirm") }} -->
-                            <!-- <input type="text" class="form__input" placeholder="Full name" required id="password_confirm"> -->
                             <label for="#password_confirm" class="form__label">Confirm password</label>
                         </div>
-
-                        <!-- <div class="form__group">
-                            <input type="text" class="form__input" placeholder="Username" required id="username">
-                            <label for="#username" class="form__label">Username</label>
-                        </div>
                         <div class="form__group">
-                            <input type="email" class="form__input" placeholder="Email" required id="email">
-                            <label for="#email" class="form__label">Email</label>
-                        </div>
-                        <div class="form__group">
-                            <input type="password" class="form__input" placeholder="Password" required id="password">
-                            <label for="#password" class="form__label">Password</label>
-                        </div>
-                        <div class="form__group">
-                            <input type="password" class="form__input" placeholder="Confirm password" required id="passwordc">
-                            <label for="#passwordc" class="form__label">Confirm password</label>
-                        </div> -->
-                        <div class="form__group">
-                            <!-- <button class="btn btn--blue" type="submit">SignUp</button> -->
                         	{{ form.submit(class="btn btn--blue") }}
                         </div>
                         <div class="form__group u-center-text form__account">
                             <span>Already have an account?</span>
-                            <a href="{{ url_for('login') }}" style="text-decoration: none;">Login</a>
+                            <a href="{{ url_for('users.login') }}" style="text-decoration: none;">Login</a>
                         </div>
                     </form>
                 </div>

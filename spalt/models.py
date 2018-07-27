@@ -1,12 +1,12 @@
-from spalt import login_manager, mysql, db
+from spalt import login_manager, db
 from flask_login import UserMixin
 from datetime import datetime
+from flask import current_app
 
 # handles sessions
 @login_manager.user_loader
 def load_user(user_id):
 	return User.query.get(int(user_id))
-
 
 # UserMixin help in session handlin' including. is user active, user annonymous, is user authenticated
 class User(db.Model, UserMixin):
@@ -15,12 +15,12 @@ class User(db.Model, UserMixin):
 	username = db.Column(db.String(30), nullable=False, unique=True)
 	email = db.Column(db.String(120), nullable=False, unique=True)
 	password = db.Column(db.String(60), nullable=False)
-	imagefile = db.Column(db.String(12), nullable=False, default='default.jpg')
+	imagefile = db.Column(db.String(20), nullable=False, default='default.jpg')
 	blogs = db.relationship('Blogs', backref='author', lazy=True)
 
 	# what the db returns
 	def __repr__(self):
-		return f"User('{self.fullname}', '{self.username}', '{self.email}', '{self.password}', '{self.imagefile}')"
+		return f"User('{self.fullname}', '{self.username}', '{self.email}', '{self.password}')"
 
 class Blogs(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
@@ -32,4 +32,4 @@ class Blogs(db.Model):
 
 	# what the db returns
 	def __repr__(self):
-		return f"User('{self.topic}', '{self.forum_type}', '{self.date_created}', '{self.user_id}')"
+		return f"User('{self.topic}', '{self.content}', '{self.forum_type}')"

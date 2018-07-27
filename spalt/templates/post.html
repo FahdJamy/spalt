@@ -69,38 +69,36 @@
 
 	<div class="detail">
 		<div class="description">
-			{% for post in posts %}
-				<a href="{{ url_for('blogs.post', blog_id=post.id) }}">{{ post.topic }}</a>
-				<p class="paragraph ml-4">
-					{{ post.content }}
+			<h1>{{ post.topic }}</h1>
+			<p class="paragraph ml-4">
+				{{ post.content }}
+			</p>
+			<!-- <p class="paragraph">
+				Accrium dolor sit amet consectetur adipisicing elit. Architecto culpa dicta 
+				suscipit, sed quibusdam labore harum assumenda exercitationem.
+			</p> -->
+			<ul class="list">
+				<li class="list__item">{{ post.forum_type }}</li>
+				<li class="list__item">Sports forum</li>
+				<li class="list__item">Lime forum</li>
+				<li class="list__item">Business forum</li>
+				<li class="list__item">Money forum</li>
+				<li class="list__item">Lifestyle forum</li>
+				<li class="list__item">Talk forum</li>
+				<li class="list__item">Loud forum</li>
+			</ul>
+			<div class="recommend">
+				<p class="recommend__count">
+				Create on {{ post.date_created.strftime('%d-%m-%Y') }} at {{ post.date_created.strftime('%H : %M') }} 
 				</p>
-				<!-- <p class="paragraph">
-					Accrium dolor sit amet consectetur adipisicing elit. Architecto culpa dicta 
-					suscipit, sed quibusdam labore harum assumenda exercitationem.
-				</p> -->
-				<ul class="list">
-					<li class="list__item">{{ post.forum_type }}</li>
-					<li class="list__item">Sports forum</li>
-					<li class="list__item">Lime forum</li>
-					<li class="list__item">Business forum</li>
-					<li class="list__item">Money forum</li>
-					<li class="list__item">Lifestyle forum</li>
-					<li class="list__item">Talk forum</li>
-					<li class="list__item">Loud forum</li>
-				</ul>
-				<div class="recommend">
-					<p class="recommend__count">
-					Create on {{ post.date_created.strftime('%d-%m-%Y') }} at {{ post.date_created.strftime('%H : %M') }} 
-					</p>
-					<div class="recommend__friends">
-						<span class="m-4"><a href="{{ url_for('users.user_timeline', username=post.author.username) }}">{{ post.author.username }}</a></span>
-						<img src="{{ url_for('static', filename='profile_pics/' + post.author.imagefile) }}" alt="We" class="recommend__photo mb-4">
-						<!-- <img src="../static/img/rajab.jpg" alt="Us" class="recommend__photo">
-						<img src="../static/img/rajab.jpg" alt="Her" class="recommend__photo">
-						<img src="../static/img/rajab.jpg" alt="Why" class="recommend__photo"> -->
-					</div>
+				<div class="recommend__friends">
+					<span class="m-4">{{ post.author.username }} </span>
+					<img src="{{ url_for('static', filename='profile_pics/' + post.author.imagefile) }}" alt="We" class="recommend__photo mb-4">
+					<!-- <img src="../static/img/rajab.jpg" alt="Us" class="recommend__photo">
+					<img src="../static/img/rajab.jpg" alt="Her" class="recommend__photo">
+					<img src="../static/img/rajab.jpg" alt="Why" class="recommend__photo"> -->
 				</div>
-			{% endfor %}
+			</div>
 		</div>
 
 		<div class="user-reviews">
@@ -138,10 +136,7 @@
 					</div>
 				</figcaption>
 			</figure>
-
 			<button class="btn-inline">View all <span>&rarr;</span></button>
-
 		</div>
 	</div>
-
 {% endblock content %}

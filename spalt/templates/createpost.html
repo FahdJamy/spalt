@@ -1,4 +1,44 @@
-{% extends 'layout.html' %}
+{% extends "layout.html" %}
 {% block content %}
-	<h1>Create Post</h1>
+	<div class="content-section" style="margin-top: 7rem; margin-left: 20rem; padding: 10px 60px; background-color: #fff; width: 50%;">
+		<div>
+			<form method="POST" action="">
+				{{ form.hidden_tag() }}
+                <legend class="border-bottom mb-4">{{ form_title }}</legend>
+				<div class="form-group">
+					{{ form.topic.label(class="form-control-label") }}
+					{% if form.topic.errors %}
+						<div class="invalid-feedback">
+							{% for error in form.topic.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+					{% endif %}
+					{{ form.topic(class="form-control form-control-lg") }}
+				</div>
+				<div class="form-group">
+					{{ form.content.label(class="form-control-label") }}
+					{% if form.content.errors %}
+						<div class="invalid-feedback">
+							{% for error in form.content.errors %}
+								<span>{{ error }}</span>
+							{% endfor %}
+						</div>
+					{% endif %}
+					{{ form.content(class="form-control form-control-lg mb-4") }}
+				<div class="media">
+			 		<span class="m-3">Your current forum type is Entertainment Change it here</span>
+					<div id="addForm" class="form-inline mb-3">
+						<select name="option" id="select" class="form-control">
+							{% for forum in forums %}
+								<option name="option">{{ forum }}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+				</div>
+				{{ form.submit(class="btn-outline-info btn-lg") }}
+			</form>
+		</div>
+	</div> 
 {% endblock content %}
