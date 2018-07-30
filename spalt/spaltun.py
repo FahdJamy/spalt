@@ -1,11 +1,10 @@
 import os
 import secrets
-from flask import flash, redirect, render_template, url_for
+from flask import flash, redirect, render_template, url_for, current_app
 from PIL import Image
 from flask_login import UserMixin
 from spalt import db, app
 from spalt.models import User, Blogs
-from flask import current_app
 from itsdangerous import TimedJSONWebSignatureSerializer as TokenSeri
 
 class ImageSave:
@@ -22,41 +21,41 @@ class ImageSave:
 		image_resized.save(file_path)
 		return image_name
 
-class MysqlResults(UserMixin):
-	def password_returner(email):
-		cur = mysql.connection.cursor()
-		email_res = cur.execute("SELECT * FROM userinfo where email = %s", [email])
-		if email_res > 0:
-			user_email = cur.fetchone()
-			real_email = user_email['email']
-			dbpass = user_email['password']
-			return str(dbpass)
-		flash('Login unsuccessful, check email and password please', 'danger')
-		return redirect(url_for('login'))
-		cur.close()
+# class MysqlResults(UserMixin):
+# 	def password_returner(email):
+# 		cur = mysql.connection.cursor()
+# 		email_res = cur.execute("SELECT * FROM userinfo where email = %s", [email])
+# 		if email_res > 0:
+# 			user_email = cur.fetchone()
+# 			real_email = user_email['email']
+# 			dbpass = user_email['password']
+# 			return str(dbpass)
+# 		flash('Login unsuccessful, check email and password please', 'danger')
+# 		return redirect(url_for('login'))
+# 		cur.close()
 
-	def email_returner(email):
-		cur = mysql.connection.cursor()
-		email_res = cur.execute("SELECT * FROM userinfo where email = %s", [email])
-		if email_res == 0:
-			return redirect('login')
-		data_user = cur.fetchone()
-		user_email = data_user['email']
-		return str(user_email)
-		cur.close()
+# 	def email_returner(email):
+# 		cur = mysql.connection.cursor()
+# 		email_res = cur.execute("SELECT * FROM userinfo where email = %s", [email])
+# 		if email_res == 0:
+# 			return redirect('login')
+# 		data_user = cur.fetchone()
+# 		user_email = data_user['email']
+# 		return str(user_email)
+# 		cur.close()
 
-	def user_returner(email):
-			cur = mysql.connection.cursor()
-			email_res = cur.execute("SELECT * FROM userinfo where email = %s", [email])
+# 	def user_returner(email):
+# 			cur = mysql.connection.cursor()
+# 			email_res = cur.execute("SELECT * FROM userinfo where email = %s", [email])
 
-			if email_res > 0:
-				user_email = cur.fetchone()
-				dbuser = user_email['username']
-				return str(dbuser)
+# 			if email_res > 0:
+# 				user_email = cur.fetchone()
+# 				dbuser = user_email['username']
+# 				return str(dbuser)
 
-			flash('Login unsuccessful, check email and password please', 'danger')
-			return redirect(url_for('login'))
-			cur.close()
+# 			flash('Login unsuccessful, check email and password please', 'danger')
+# 			return redirect(url_for('login'))
+# 			cur.close()
 
 class ResetRequest:
 	def reset_token():
@@ -66,7 +65,7 @@ class ResetRequest:
 		return token
 
 	def token_verifier(token):
-		token_serializer = TokenSeri(app.config['SECRET_KEY'])
+		token_serializer = TokenSeri(current_app.config['SECRET_KEY'])
 		try:
 			user_id = token_serializer.loads(token).user_id		
 		except:

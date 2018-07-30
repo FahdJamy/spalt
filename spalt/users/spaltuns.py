@@ -1,7 +1,6 @@
 import os
 import secrets
 from PIL import Image
-from spalt import app
 from spalt.models import User, Blogs
 from flask import current_app
 from itsdangerous import TimedJSONWebSignatureSerializer as TokenSeri
@@ -24,12 +23,12 @@ class ImageSave:
 class ResetRequest:
 	def reset_token():
 		seconds_to_expire = 1800
-		token_serializer = TokenSeri(app.config['SECRET_KEY'], seconds_to_expire)
+		token_serializer = TokenSeri(current_app.config['SECRET_KEY'], seconds_to_expire)
 		token = token_serializer.dumps({'user_id': User.id}).decode('utf-8')
 		return token
 
 	def token_verifier(token):
-		token_serializer = TokenSeri(app.config['SECRET_KEY'])
+		token_serializer = TokenSeri(current_app.config['SECRET_KEY'])
 		try:
 			user_id = token_serializer.loads(token).user_id		
 		except:

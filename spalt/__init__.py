@@ -20,10 +20,10 @@ login_manager.login_message_category = 'info'
 # app.config['MYSQL_PASSWORD'] = ''
 # app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
-mail = Mail(app)
+mail = Mail()
 
-mysql = MySQL(app)
-bcrypt = Bcrypt(app)
+# mysql = MySQL()
+bcrypt = Bcrypt()
 
 
 def appCreator(config_name=Config):
@@ -41,4 +41,6 @@ def appCreator(config_name=Config):
 	app.register_blueprint(users)
 	app.register_blueprint(blogs)
 	app.register_blueprint(home)
+
+	return app
 
