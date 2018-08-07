@@ -56,7 +56,7 @@ def signup():
 		login_user(user)
 
 		flash(f'Your account has been created successfully', 'success')
-		return redirect(url_for('login'))
+		return redirect(url_for('home.main'))
 	return render_template('signup.html', form=form)
 
 
@@ -86,10 +86,11 @@ def account():
 
 
 @users.route('/timeline/<string:username>')
+@login_required
 def user_timeline(username):
 	user = User.query.filter_by(username=username).first_or_404()
 	posts = Blogs.query.filter_by(author=user)
-	return render_template('user_page.html', user=user, posts=posts)
+	return render_template('user_page.html', user=user, posts=posts, username=username)
 
 @users.route('/reset_password', methods=['POST', 'GET'])
 def reset_password_token():

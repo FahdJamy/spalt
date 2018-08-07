@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for
+from flask import Blueprint, render_template, redirect, url_for, request
 from spalt.blogs.forms import PostForm
 from flask_login import current_user, login_required
 from spalt import db
@@ -16,7 +16,7 @@ def  create_post():
 		blogs = Blogs(topic=form.topic.data, content=form.content.data, author=current_user, forum_type=request.form['option'])
 		db.session.add(blogs)
 		db.session.commit()
-		return redirect(url_for('main.main'))
+		return redirect(url_for('home.main'))
 	return render_template('createpost.html', form=form, forums=forumType, form_title='Create New Post')
 
 @blogs.route('/post/<int:blog_id>', methods=['GET', 'POST'])
@@ -36,7 +36,7 @@ def post_update(blog_id):
 		post.topic = form.topic.data
 		post.content = form.content.data
 		db.session.commit()
-		return redirect(url_for('main.main', blog_id=post.id))
+		return redirect(url_for('home.main', blog_id=post.id))
 	elif request.method == 'GET':
 		form.topic.data = post.topic
 		form.content.data = post.content
@@ -49,5 +49,5 @@ def post_delete(blog_id):
 	if post.author == current_user:
 		db.session.delete(post)
 		db.session.commit()
-		return redirect(url_for('main.main'))
+		return redirect(url_for('home.main'))
 	return render_template('post.html')
